@@ -264,3 +264,10 @@ DELIMITER ;
 -- create view for the receptionist to see all of patients bills and payments, create view for doctor to see all patients med history combined.
 -- create view where receptionist can see current appts for specific doctor
 -- need to add login info (username, password, security lvl/role)
+
+INSERT INTO Employee (employee_id, employee_ssn, first_name, last_name, role, office_id, doctor_info)
+VALUES 
+(201, '999-99-9999', 'Test', 'Doctor', 'Doctor', 1, JSON_OBJECT('specialty', 'Cardiology', 'years_of_experience', 10));
+
+ALTER TABLE Employee ADD COLUMN password VARCHAR(50);
+UPDATE Employee SET password = 'testpassword' WHERE employee_id = 201;
